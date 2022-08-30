@@ -1,0 +1,20 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+}
+
+.navbar__links{
+    display: flex;
+    gap: 1.5rem;
+    margin-left: 580px;
+    margin-top: 50px;
+}
+
+.material-symbols-outlined{
+   display: flex;
+   font-size: 35px;
+   margin-top: 50px;
+   margin-left: 80px;
+}

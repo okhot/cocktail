@@ -1,0 +1,41 @@
+.Herosection{
+  background-image: url(/src/assets/heropic.png);
+  background-position: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 900px;
+}
+
+.hero__text{
+ margin: 300px 90px;
+}
+
+.hero__text h1{
+  color: #612999;
+  font-size: 100px;
+}
+
+.hero__text p{
+  font-size: 25px;
+}
+
+.searchbar{
+  width: 380px;
+  height: 40px;
+  border-radius: 20px;
+  border: 0px;
+}
+
+.input{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 50px;
+}
+
+.input button{
+ width: 90px;
+
+}
+
+
