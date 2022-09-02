@@ -31,12 +31,7 @@ export default function HeroSection() {
           mauris arcu aenean in <br /> mauris elementum sed non. In sapien enim
         </p>
         <form onSubmit={submitHandler} className="input">
-          <input placeholder="Hi" name="search" className="searchbar" />
-          <button
-            class="material-symbols-outlined"
-          >
-            search
-          </button>
+          <input placeholder="SEARCH COCKTAILS" name="search" className="searchbar" />
         </form>
       </div>
     </div>

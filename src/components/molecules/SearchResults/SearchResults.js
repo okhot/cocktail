@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import "../SearchResults/SearchResults.css";
 import { useLocation, useParams } from "react-router-dom";
+import SearchPageNavBar from "../../atoms/SearchPageNavBar/SearchPageNavBar";
+import SearchPageSideBar from "../../atoms/SearchPageSideBar/SearchPageSideBar";
+import SidebarProp from "../../atoms/SearchPageSideBar/SidebarProp";
+import CocktailCard from "../SearchPageBody/CocktailCard";
+import { searchCocktails } from "../../../api/api";
+import CocktailsContext from "../../../store";
 
 function SearchResults() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const searchTerm = params.get("searchTerm");
-  const [cocktails, setCocktails] = useState([]);
+  const cocktails = useContext(CocktailsContext);
 
   function search(term) {
     if (term) {
-      const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${term}`;
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => setCocktails(data.drinks));
+      searchCocktails(term).then((drinks) => cocktails.set(drinks));
     } else {
-      setCocktails([]);
+      cocktails.set([]);
     }
   }
 
@@ -24,9 +28,23 @@ function SearchResults() {
 
   return (
     <div>
-      <h1>Hello World {searchTerm}</h1>
-
-      {cocktails.map(cocktail => <div key={cocktail.idDrink}>{cocktail.strDrink}</div>)}
+      <div className="searchpage">
+        <SearchPageNavBar />
+        <div className="searchpage__body">
+          <SidebarProp />
+          <div className="cardssection">
+            {cocktails.drinks.map((cocktail) => (
+              <CocktailCard
+                key={cocktail.idDrink}
+                title={cocktail.strDrink}
+                thumbnail={cocktail.strDrinkThumb}
+                category={cocktail.strCategory}
+                alcohol_content={cocktail.strAlcoholic}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

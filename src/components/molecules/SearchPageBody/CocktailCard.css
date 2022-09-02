@@ -1,0 +1,11 @@
+.cocktailcard {
+    flex: 1;
+    min-width: 300px;
+    margin: auto;
+}
+
+.cocktailcard__img {
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+}

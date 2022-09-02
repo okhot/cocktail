@@ -1,0 +1,16 @@
+.searchpage{
+    width: 100%;
+}
+
+.searchpage__body{
+    display: flex;
+}
+
+.cardssection{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 10px 10px;
+  padding: 10px;
+  gap: 1rem;
+  background-color: #F7F7F7;
+}
