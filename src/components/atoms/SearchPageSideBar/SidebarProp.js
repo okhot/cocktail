@@ -4,13 +4,16 @@ import SearchPageSideBar from './SearchPageSideBar'
 
 function SidebarProp() {
   return (
-   <section className='sidebar'>
+   <section className='sidebar__ingridients'>
         <SearchPageSideBar 
     title='redpepper'
     ingridient='black'
     count='300'
     />
 
+<SearchPageSideBar 
+ingridient1='rice'
+/>
    </section>
   )
 }
