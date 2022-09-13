@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import '../SearchPageNavBar/SearchPageNavBar.css'
 
@@ -9,7 +8,6 @@ function SearchPageNavBar() {
 
  const navigate = useNavigate();
 
- const [search, setSearch] = useState('');
 
   const handleChange = (e) => {
   

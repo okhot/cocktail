@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import "../SearchResults/SearchResults.css";
 import { useLocation, useParams } from "react-router-dom";
 import SearchPageNavBar from "../../atoms/SearchPageNavBar/SearchPageNavBar";
-import SearchPageSideBar from "../../atoms/SearchPageSideBar/SearchPageSideBar";
-import SidebarProp from "../../atoms/SearchPageSideBar/SidebarProp";
+
 import CocktailCard from "../SearchPageBody/CocktailCard";
 import { searchCocktails } from "../../../api/api";
 import CocktailsContext from "../../../store";
+import SideBar from "../SideBar/SideBar";
 
 function SearchResults() {
   const location = useLocation();
@@ -30,8 +30,8 @@ function SearchResults() {
     <div>
       <div className="searchpage">
         <SearchPageNavBar />
+        <SideBar />
         <div className="searchpage__body">
-          <SidebarProp />
           <div className="cardssection">
             {cocktails.drinks.map((cocktail) => (
               <CocktailCard
