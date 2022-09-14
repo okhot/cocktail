@@ -1,0 +1,23 @@
+.SideBar {
+    background-color: snow;
+    text-align:left;
+    width: 15%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 0px;
+}
+
+.SideBar__category{
+  cursor: pointer;
+  color: grey;
+  border-bottom: 1px solid grey;
+}
+
+p{
+  padding: 1px;
+}
+
+p:hover{
+  color: black;
+  background-color: white;
+}

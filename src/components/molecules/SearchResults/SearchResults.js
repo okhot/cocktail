@@ -30,8 +30,9 @@ function SearchResults() {
     <div>
       <div className="searchpage">
         <SearchPageNavBar />
-        <SideBar />
+    
         <div className="searchpage__body">
+        <SideBar />
           <div className="cardssection">
             {cocktails.drinks.map((cocktail) => (
               <CocktailCard
