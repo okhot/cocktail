@@ -28,7 +28,7 @@ function SearchResults() {
 
   return (
     <div>
-      <div className="searchpage">
+      <div class Name="searchpage">
         <SearchPageNavBar />
     
         <div className="searchpage__body">

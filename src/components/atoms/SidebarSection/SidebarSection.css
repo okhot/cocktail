@@ -2,12 +2,20 @@
     cursor: pointer;
     color: grey;
     border-bottom: 1px solid grey;
-    max-height: 155px;
+    max-height: calc(100% - 117px);
     overflow: auto;
   }
   
-  p{
-    padding: 1px;
+  p, h4{
+    padding: 10px;
+  }
+
+  h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eee;
+    margin: 0;
   }
   
   p:hover{
