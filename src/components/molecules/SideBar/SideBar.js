@@ -1,5 +1,8 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
+import { searchAlcohol, searchCategory, searchGlass, searchIngredients } from "../../../api/api";
+import CocktailsContext from "../../../store";
 import SidebarSection from "../../atoms/SidebarSection/SidebarSection";
+import CocktailCard from "../SearchPageBody/CocktailCard";
 import "../SideBar/sideBar.css";
 
 function SideBar() {
@@ -8,29 +11,33 @@ function SideBar() {
   const [glass, setGlass] = useState([]);
   const [alcohol, setAlcohol] = useState([]);
   const [openedSection, setOpenedSection] = useState("ingredients");
+  const cocktails = useContext(CocktailsContext);
 
-  const sections = useMemo(() => [
-    {
-      id: "ingredients",
-      title: "Ingredients",
-      options: ingredients,
-    },
-    {
-      id: "category",
-      title: "Category",
-      options: category,
-    },
-    {
-      id: "glass",
-      title: "Glass",
-      options: glass,
-    },
-    {
-      id: "alcohol",
-      title: "Alcohol",
-      options: alcohol,
-    },
-  ], [ingredients, category, glass, alcohol]);
+  const sections = useMemo(
+    () => [
+      {
+        id: "ingredients",
+        title: "Ingredients",
+        options: ingredients,
+      },
+      {
+        id: "category",
+        title: "Category",
+        options: category,
+      },
+      {
+        id: "glass",
+        title: "Glass",
+        options: glass,
+      },
+      {
+        id: "alcohol",
+        title: "Alcohol",
+        options: alcohol,
+      },
+    ],
+    [ingredients, category, glass, alcohol]
+  );
 
   useEffect(() => {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`)
@@ -57,8 +64,18 @@ function SideBar() {
     setOpenedSection("");
   }
 
-  function onOptionClicked(option, sectionId) {
-    console.log(sectionId, option);
+  function onOptionClicked(term, sectionId) {
+    if (sectionId === "category") {
+      searchCategory(term).then((drinks) => cocktails.set(drinks));
+    } else if (sectionId === "ingredients") {
+      searchIngredients(term).then((drinks) => cocktails.set(drinks));
+    } else if (sectionId === "alcohol") {
+      searchAlcohol(term).then((drinks) => cocktails.set(drinks));
+    } else if (sectionId === "glass") {
+      searchGlass(term).then((drinks) => cocktails.set(drinks));
+    }else {
+      CocktailsContext.set([]);
+    }
   }
 
   return (
@@ -71,7 +88,7 @@ function SideBar() {
           open={openedSection === section.id}
           onOpen={() => setOpenedSection(section.id)}
           onClosed={onClosed}
-          onOptionClicked={option => onOptionClicked(option, section.id)}
+          onOptionClicked={(term) => onOptionClicked(term, section.id)}
         />
       ))}
     </div>
